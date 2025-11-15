@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Social Post Analyzer — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo">Social Post Analyzer</div>
+        <div class="subtitle">Optimize posts • Improve engagement</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <div class="stat-card">
+        <div class="stat-title">Quality</div>
+        <div id="qualityScore" class="stat-value">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Sentiment</div>
+        <div id="sentimentLabel" class="stat-value muted">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">Suggestions</div>
+        <div id="suggestCount" class="stat-value">—</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="card-title">Analyze content</h2>
+      <p class="card-sub">Upload a PDF/image or paste text. We'll extract and provide suggestions to boost engagement.</p>
+
+      <label id="uploadZone" class="upload-zone" tabindex="0" aria-label="Upload file area">
+        <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" style="display:none" />
+        <div class="upload-content">
+          <div class="upload-icon">📤</div>
+          <div class="upload-head">Drop a file here or click to upload</div>
+          <div class="upload-sub">PDF, JPG, PNG. OCR and PDF parsing supported.</div>
+        </div>
+      </label>
+
+      <textarea id="textInput" class="editor" placeholder="Or paste your post text here..."></textarea>
+
+      <div class="actions-row">
+        <div class="left-actions">
+          <button id="extractBtn" class="btn primary">Extract Text</button>
+          <button id="analyzeBtn" class="btn outline">Analyze</button>
+        </div>
+        <div id="skeletonWrap" class="loader-area" aria-hidden="true"></div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-panel">
+          <h3>Extracted Text</h3>
+          <pre id="extractedText" class="output">(no text yet)</pre>
+        </div>
+
+        <div class="result-panel narrow">
+          <h3>Suggestions</h3>
+          <div class="sentiment-block">
+            <div class="meter">
+              <div class="meter-bg"><div class="meter-fill" id="meterFill" style="width:0%"></div></div>
+              <div class="meter-labels"><span class="bad">Negative</span><span class="good">Positive</span></div>
+            </div>
+          </div>
+          <ul id="suggestions" class="suggestions" aria-live="polite"></ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">© 2025 Social Post Analyzer — OCR • PDF parsing • Rule-based suggestions</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
